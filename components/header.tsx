@@ -10,6 +10,7 @@ const Header = ({ scrollYAnimatedValue }) => {
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
     extrapolate: "clamp"
   });
+
   return (
     <Animated.View
       style={[styles.animatedHeaderContainer, { height: headerHeight }]}
@@ -25,9 +26,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    zIndex: 1,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1,
     backgroundColor: "blue"
   },
   headerText: {

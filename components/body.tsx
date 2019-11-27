@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  Animated,
-  StyleSheet,
-  FlatList
-} from "react-native";
+import { View, Text, Animated, StyleSheet, FlatList } from "react-native";
 
 const array = new Array(75).fill(0).map((e, i) => `Row #${i}`);
 
@@ -14,6 +7,10 @@ const Body = ({ scrollYAnimatedValue }) => {
   return (
     <View>
       <FlatList
+        scrollEventThrottle={16}
+        onScroll={Animated.event([
+          { nativeEvent: { contentOffset: { y: scrollYAnimatedValue } } }
+        ])}
         style={styles.container}
         data={array}
         renderItem={({ item }) => (
@@ -22,10 +19,6 @@ const Body = ({ scrollYAnimatedValue }) => {
           </View>
         )}
         keyExtractor={item => item}
-        scrollEventThrottle={16}
-        onScroll={Animated.event([
-          { nativeEvent: { contentOffset: { y: scrollYAnimatedValue } } }
-        ])}
       ></FlatList>
     </View>
   );
